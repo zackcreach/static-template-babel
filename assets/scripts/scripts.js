@@ -1,1 +1,1 @@
-import './modules/_instagram.js'
+import './modules/_body.js'
