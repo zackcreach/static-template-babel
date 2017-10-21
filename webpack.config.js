@@ -11,6 +11,13 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/scripts'),
   },
+  resolve: {
+    alias: {
+      styles: path.resolve(__dirname, 'assets/styles/'),
+      scripts: path.resolve(__dirname, 'assets/scripts/'),
+      images: path.resolve(__dirname, 'assets/images/'),
+    }
+  }
   plugins: [
     new BrowserSyncPlugin({
       server: { baseDir: 'public', },
@@ -46,7 +53,7 @@ const config = {
         ],
       },
       {
-        test: /\.(s?css$|styl$)/,
+        test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -55,13 +62,26 @@ const config = {
               options: { importLoaders: 1, }
             },
             'postcss-loader',
-            'stylus-loader',
           ],
         }),
       },
+      // Stylus option!
+      // {
+      //   test: /\.styl$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: 'style-loader',
+      //     use: [
+      //       {
+      //         loader: 'css-loader',
+      //         options: { importLoaders: 1, }
+      //       },
+      //       'stylus-loader',
+      //     ],
+      //   }),
+      // },
       // CSS Modules option!
       // {
-      //   test: /\.(s?css$|styl$)/,
+      //   test: /\.s?css$/,
       //   use: [
       //     {
       //       loader: 'css-loader',
@@ -72,7 +92,6 @@ const config = {
       //       },
       //     },
       //     'postcss-loader',
-      //     'stylus-loader',
       //   ],
       // },
     ]
