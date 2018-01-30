@@ -1,0 +1,32 @@
+.navigation {
+
+  &__container-horizontal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+  }
+
+  &__container-vertical {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+  }
+
+  &__item {
+      display: inline-block;
+      // padding-top: 8px;
+  }
+
+  &__link {
+      font-size: .62rem;
+      color: $text-subtitle-color;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      transition: $transition-ease;
+  }
+  
+  &__link:hover {
+      color: $text-title-color;
+  }
+}

@@ -1,0 +1,14 @@
+.container {
+  padding: 0 $gutter-spacing-mobile 0 $gutter-spacing-mobile;
+
+  @include atMedium {
+    padding: 0 $gutter-spacing-desktop 0 $gutter-spacing-desktop;
+  }
+
+  @include atXLarge {
+    padding: 0;
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: $container-width;
+  }
+}

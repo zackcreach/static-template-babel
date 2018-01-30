@@ -1,0 +1,90 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: $font-open-sans;
+	font-weight: 300;
+}
+
+body {
+	color: $text-body-color;
+	
+	@include atSmall {
+		color: lighten($text-body-color, 18%);
+	}
+}
+
+img {
+	max-width:100%;
+	height: auto;
+}
+
+h1, h2 {
+	font-family: $font-playfair;
+	font-weight: 300;
+}
+
+h1 {
+	color: $text-title-color;
+	font-size: 2.31rem;
+	line-height: 48px;
+	
+	@include atMedium {
+		font-size: 2.68rem;
+		line-height: 52px;
+	}
+}
+
+h2 {
+	color: $text-title-color;
+	font-size: 1.8rem;
+	line-height: 38px;
+	
+	@include atSmall {
+		font-size: 2rem;
+		line-height: 41px;
+	}
+}
+
+h3 {
+	font-size: .75rem;
+	color: $text-subtitle-mobile-color;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	
+	@include atMedium {
+		color: $text-subtitle-color;
+	}
+}
+
+p {
+	font-size: .81rem;
+	line-height: 25px;
+
+	@include atMedium {
+		font-size: .87rem;
+		line-height: 25px;	
+	}
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	color: $primary-color;
+	text-decoration: none;
+	transition: $transition-ease;
+}
+
+a:hover {
+	color: darken($primary-color, 15%);
+}
+
+input, textarea, option {
+	border: none;
+	outline: 0;
+	height: 44px;
+}

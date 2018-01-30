@@ -1,70 +1,68 @@
-const path = require('path');
-const webpack = require('webpack');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const nodeEnv = process.env.NODE_ENV || 'production';
+const path = require("path");
+const webpack = require("webpack");
+// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+// const HTMLWebpackPlugin = require('html-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const nodeEnv = process.env.NODE_ENV || "production";
 
 const config = {
-  entry: ['./assets/scripts/scripts.js'],
+  entry: ["./assets/scripts/scripts.js"],
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public/scripts'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public"),
   },
-  resolve: {
-    alias: {
-      styles: path.resolve(__dirname, 'assets/styles/'),
-      scripts: path.resolve(__dirname, 'assets/scripts/'),
-      images: path.resolve(__dirname, 'assets/images/'),
-    }
-  }
+  // resolve: {
+  //   alias: {
+  //     styles: path.resolve(__dirname, "assets/styles/"),
+  //     scripts: path.resolve(__dirname, "assets/scripts/"),
+  //     images: path.resolve(__dirname, "assets/images/"),
+  //   },
+  // },
   plugins: [
-    new BrowserSyncPlugin({
-      server: { baseDir: 'public', },
-      port: 3333,
-      notify: true,
-      open: true,
-      files: './public/**/*',
-    }),
-    new HTMLWebpackPlugin({
-      template: './assets/index.html',
-      filename: './../index.html',
-    }),
-    new ExtractTextPlugin({
-      filename: 'styles/styles.css',
-      
-    }),
+    // new BrowserSyncPlugin({
+    //   server: { baseDir: 'public', },
+    //   port: 3333,
+    //   notify: true,
+    //   open: true,
+    //   files: './public/**/*',
+    // }),
+    // new HTMLWebpackPlugin({
+    //   template: './assets/index.html',
+    //   filename: './../index.html',
+    // }),
+    // new ExtractTextPlugin({
+    //   filename: 'styles/styles.css',
+
+    // }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false, },
-      output: { comments: false, },
+      compress: { warnings: false },
+      output: { comments: false },
       sourcemap: true,
     }),
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify(nodeEnv) },
+      "process.env": { NODE_ENV: JSON.stringify(nodeEnv) },
     }),
   ],
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          'babel-loader'
-        ],
+        use: ["babel-loader"],
       },
-      {
-        test: /\.s?css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: { importLoaders: 1, }
-            },
-            'postcss-loader',
-          ],
-        }),
-      },
+      // {
+      //   test: /\.s?css$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: 'style-loader',
+      //     use: [
+      //       {
+      //         loader: 'css-loader',
+      //         options: { importLoaders: 1, }
+      //       },
+      //       'postcss-loader',
+      //     ],
+      //   }),
+      // },
       // Stylus option!
       // {
       //   test: /\.styl$/,
@@ -86,7 +84,7 @@ const config = {
       //     {
       //       loader: 'css-loader',
       //       options: {
-      //         importLoaders: 1, 
+      //         importLoaders: 1,
       //         modules: true,
       //         localIdentName: '[local]--[hash:base64:3],
       //       },
@@ -94,9 +92,9 @@ const config = {
       //     'postcss-loader',
       //   ],
       // },
-    ]
+    ],
   },
-  devtool: 'cheap-eval-source-map',
+  devtool: "cheap-eval-source-map",
 };
 
 module.exports = config;

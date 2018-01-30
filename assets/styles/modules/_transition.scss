@@ -1,0 +1,21 @@
+.transition {
+
+  &__fade-enter {
+      opacity: 0;
+      
+      &-active {
+          opacity: 1;
+          transition: $transition-ease;
+      }
+  }
+
+  &__fade-exit {
+      opacity: 1;
+      
+      &-active {
+          opacity: 0;
+          transition: $transition-ease;
+      }
+  }
+
+}
